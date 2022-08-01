@@ -1,14 +1,26 @@
 import React from "react";
 import Button from "../../../styles/buttons";
 
-function CartTotal() {
+function CartTotal({ cartProducts, setCartProducts }) {
+  const totalPrice = cartProducts.reduce(
+    (totalPrice, { price, quantity }) => totalPrice + price * quantity,
+    0
+  );
+
   return (
     <section className="cart-details">
       <div>
         <h4>Total</h4>
-        <strong>R$ 40,00</strong>
+        <strong>
+          {totalPrice.toLocaleString("pt-br", {
+            style: "currency",
+            currency: "BRL",
+          })}
+        </strong>
       </div>
-      <Button theme="secondary">Remover Todos</Button>
+      <Button theme="secondary" onClick={() => setCartProducts([])}>
+        Remover Todos
+      </Button>
     </section>
   );
 }

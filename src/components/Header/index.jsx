@@ -4,13 +4,13 @@ import InputSearch from "./InputSearch";
 import Logo from "../Logo";
 import StyledHeader from "./styles";
 
-function Header() {
+function Header({ setFilter }) {
   return (
     <StyledHeader>
       <Container>
         <Content className="content">
           <Logo />
-          <InputSearch />
+          <InputSearch setFilter={setFilter} />
         </Content>
       </Container>
     </StyledHeader>

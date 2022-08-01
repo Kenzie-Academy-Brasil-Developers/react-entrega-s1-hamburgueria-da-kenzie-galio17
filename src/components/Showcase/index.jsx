@@ -2,10 +2,10 @@ import React from "react";
 import ProductsList from "../ProductsList";
 import StyledMain from "./styles";
 
-function Showcase() {
+function Showcase({ productsData, setCartProducts }) {
   return (
     <StyledMain>
-      <ProductsList />
+      <ProductsList products={productsData} setCartProducts={setCartProducts} />
     </StyledMain>
   );
 }

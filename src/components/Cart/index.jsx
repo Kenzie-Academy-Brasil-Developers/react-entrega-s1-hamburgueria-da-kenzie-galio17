@@ -5,16 +5,25 @@ import CartTotal from "./CartTotal";
 import EmptyCart from "./EmptyCart";
 import StyledAside from "./styles";
 
-function Cart() {
+function Cart({ cartProducts, setCartProducts }) {
   return (
     <StyledAside>
       <Container>
         <h2>Carrinho de compras</h2>
-        {/* <EmptyCart /> */}
-        <div className="cart-info">
-          <ProductsList cart />
-          <CartTotal />
-        </div>
+        {cartProducts.length ? (
+          <div className="cart-info">
+            <ProductsList
+              products={cartProducts}
+              setCartProducts={setCartProducts}
+            />
+            <CartTotal
+              cartProducts={cartProducts}
+              setCartProducts={setCartProducts}
+            />
+          </div>
+        ) : (
+          <EmptyCart />
+        )}
       </Container>
     </StyledAside>
   );
