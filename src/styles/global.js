@@ -1,5 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 
+const darkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
 const Global = createGlobalStyle`
   :root {
     /* Palettes */
@@ -9,11 +11,11 @@ const Global = createGlobalStyle`
     --color-secondary: #EB5757;
 
     /* Grey Scale Palette */
-    --grey-100: #333333;
-    --grey-50: #828282;
+    --grey-100: ${darkMode ? "#F5F5F5" : "#333333"};
+    --grey-50: ${darkMode ? "#E0E0E0" : "#828282"};
     --grey-30: #BDBDBD;
-    --grey-20: #E0E0E0;
-    --grey-0: #F5F5F5;
+    --grey-20: ${darkMode ? "#828282" : "#E0E0E0"};
+    --grey-0: ${darkMode ? "#333333" : "#F5F5F5"};
 
     /* Feedback Palette */
     --negative: #E60000;
@@ -51,8 +53,8 @@ const Global = createGlobalStyle`
   }
 
   body {
-    background-color: var(--black);
-    color: var(--black);
+    background-color: ${darkMode ? "var(--black)" : "var(--white)"};
+    color: ${darkMode ? "var(--white)" : "var(--black)"};
     font-size: 0.875rem;
   }
 
@@ -91,6 +93,16 @@ const Global = createGlobalStyle`
 
   :focus {
     outline: 0;
+  }
+
+  ::-webkit-scrollbar {
+    background-color: var(--grey-0);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--grey-100);
+    border-radius: 10rem;
+    border: 5px solid var(--grey-0);
   }
 `;
 export default Global;

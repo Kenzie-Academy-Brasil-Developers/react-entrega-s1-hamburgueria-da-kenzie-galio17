@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+const darkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
 const StyledMain = styled.main`
   flex: 1;
 
@@ -12,6 +14,14 @@ const StyledMain = styled.main`
     flex-direction: column;
     flex-wrap: wrap;
     gap: 20px;
+
+    ::-webkit-scrollbar {
+      background-color: var(--black);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      border-color: var(--black);
+    }
   }
 
   li {
@@ -20,6 +30,8 @@ const StyledMain = styled.main`
     width: 18.75rem;
     max-width: 70vw;
     height: 21.625rem;
+
+    overflow: hidden;
 
     display: inline-flex;
 
@@ -30,12 +42,16 @@ const StyledMain = styled.main`
       align-items: center;
 
       .description {
-        background-color: var(--white);
+        background-color: ${darkMode ? "var(--black)" : "var(--white)"};
         padding: 23px 20px;
         gap: 14px;
 
         .details {
           gap: 14px;
+
+          h3 {
+            color: var(--grey-100);
+          }
         }
       }
     }

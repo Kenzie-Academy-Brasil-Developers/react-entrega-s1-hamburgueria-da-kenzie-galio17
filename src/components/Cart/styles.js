@@ -19,6 +19,10 @@ const StyledAside = styled.aside`
     flex: 1;
     justify-content: center;
     align-items: center;
+
+    h3 {
+      color: var(--grey-100);
+    }
   }
 
   .cart-info {
@@ -33,7 +37,7 @@ const StyledAside = styled.aside`
 
     div {
       flex-direction: row;
-      align-items: stretch;
+      align-items: center;
       gap: 10px;
 
       .image {
@@ -41,6 +45,7 @@ const StyledAside = styled.aside`
 
         border-radius: 5px;
         width: 80px;
+        height: 80px;
 
         img {
           width: 100%;
@@ -50,10 +55,16 @@ const StyledAside = styled.aside`
       .description {
         flex: 1;
         flex-direction: row;
+        gap: 3px;
 
         .details {
+          min-width: 110px;
           justify-content: space-between;
           gap: 5px;
+
+          h3 {
+            color: var(--grey-100);
+          }
 
           em {
             background-color: var(--color-primary-100);
