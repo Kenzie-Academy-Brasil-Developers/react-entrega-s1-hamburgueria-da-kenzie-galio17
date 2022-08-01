@@ -16,11 +16,11 @@ function Product({ product, setCartProducts }) {
         );
 
         return [
-          ...newData,
           { ...product, quantity: existingProduct.quantity + 1 },
+          ...newData,
         ];
       } else {
-        return [...cartProducts, { ...product, quantity: 1 }];
+        return [{ ...product, quantity: 1 }, ...cartProducts];
       }
     });
   }
